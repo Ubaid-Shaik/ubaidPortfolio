@@ -11,13 +11,18 @@
 <body>
     <header>
         <a href="#" class="logo">Ubaid</a>
-
-        <nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <nav class="nav-menu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="#" class="active">Skills</a>
             <a href="education.html">Education</a>
             <a href="experience.html">Experience</a>
+            <a href="projects.html">Projects</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
@@ -60,14 +65,14 @@
             <div class="skill-bar">
                 <div class="skill-title">UI/UX Design</div>
                 <div class="progress">
-                    <div class="progress-bar" data-skill="85"></div>
+                    <div class="progress-bar" data-skill="90"></div>
                 </div>
                 <div class="skill-percentage">0%</div>
             </div>
             <div class="skill-bar">
                 <div class="skill-title">Kotlin</div>
                 <div class="progress">
-                    <div class="progress-bar" data-skill="60"></div>
+                    <div class="progress-bar" data-skill="85"></div>
                 </div>
                 <div class="skill-percentage">0%</div>
             </div>
@@ -116,7 +121,7 @@
             <div class="skill-bar">
                 <div class="skill-title">Creativity</div>
                 <div class="progress">
-                    <div class="progress-bar" data-skill="90"></div>
+                    <div class="progress-bar" data-skill="95"></div>
                 </div>
                 <div class="skill-percentage">0%</div>
             </div>
@@ -159,6 +164,14 @@
     </section>
     
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenu.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+    });
+});
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.querySelector('header');
             let lastScrollTop = 0;
