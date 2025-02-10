@@ -40,6 +40,7 @@
     margin-bottom: 4.5rem;
 }
 
+/* Project Grid (Default Horizontal Layout) */
 .project-grid {
     display: flex;
     overflow-x: auto;
@@ -150,6 +151,14 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Switch to vertical layout for smaller screens */
+    .project-grid {
+        flex-direction: column; /* Stack cards vertically */
+        overflow-x: visible; /* Disable horizontal scrolling */
+        scroll-snap-type: none; /* Remove snap behavior */
+        gap: 1.5rem; /* Adjust spacing between cards */
+    }
+
     .projects-content h1 {
         font-size: 3.5rem;
     }
@@ -159,7 +168,9 @@
     }
 
     .project-card {
-        width: 250px; /* Adjust card width for smaller screens */
+        width: 100%; /* Make cards full-width */
+        max-width: 400px; /* Limit maximum width for better readability */
+        margin: 0 auto; /* Center cards */
     }
 
     .project-slider {
@@ -175,6 +186,7 @@
     }
 }
 
+/* Scroll Controls (Hidden on Small Screens) */
 .scroll-controls {
     position: relative;
     margin: 2rem 0;
@@ -212,18 +224,9 @@
     right: 2rem;
 }
 
+/* Hide scroll arrows on small screens */
 @media (max-width: 768px) {
     .scroll-arrow {
-        width: 30px;
-        height: 30px;
-        padding: 0.5rem;
-    }
-    
-    .left-arrow {
-        left: 1rem;
-    }
-    
-    .right-arrow {
-        right: 1rem;
+        display: none; /* Remove scroll arrows */
     }
 }

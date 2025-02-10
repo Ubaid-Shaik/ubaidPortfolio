@@ -13,11 +13,11 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 5rem 9%;
+    padding: 5rem 4%; /* Reduced padding for better responsiveness */
     color: #f0f0f0;
     font-family: 'Montserrat', sans-serif;
-    position: relative; /* Makes sure the about section is positioned correctly */
-    z-index: 1; /* Ensures the content is above the video */
+    position: relative; /* Ensures correct positioning */
+    z-index: 1; /* Ensures content is above the video */
 }
 
 .bg-video1 {
@@ -30,7 +30,7 @@ body {
     z-index: -1; /* Places the video behind the content */
 }
 
-/* Other existing styles for .about-content */
+/* About content container */
 .about-content {
     max-width: 900px;
     padding: 3rem;
@@ -94,44 +94,83 @@ body {
     margin-bottom: 0;
 }
 
-/* Adjust logo styling for consistency */
-.logo {
-    font-size: 2.4rem;
-    font-weight: bold;
-    color: #b74b4b;
-    text-decoration: none;
-}
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .about-content {
+        padding: 2rem;
+    }
 
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
+    .about-content h1 {
+        font-size: 4rem;
+    }
 
-.menu-toggle .bar {
-    height: 3px;
-    width: 25px;
-    background-color: #fff;
-    margin: 4px 0;
-    transition: 0.4s;
+    .about-content p,
+    .about-content ul {
+        font-size: 1.6rem;
+    }
 }
 
 @media (max-width: 995px) {
-    .menu-toggle {
-        display: flex;
+    .about-content {
+        padding: 1.5rem;
     }
 
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: #161616;
+    .about-content h1 {
+        font-size: 3.5rem;
     }
 
-    .nav-menu.active {
-        display: flex;
+    .about-content p,
+    .about-content ul {
+        font-size: 1.4rem;
+    }
+
+    .about-content ul li::before {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 3rem 2%; /* Reduce padding for smaller screens */
+    }
+
+    .about-content {
+        padding: 1.5rem;
+    }
+
+    .about-content h1 {
+        font-size: 3rem;
+    }
+
+    .about-content p,
+    .about-content ul {
+        font-size: 1.2rem;
+    }
+
+    .about-content ul li::before {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .about {
+        padding: 2rem 2%; /* Further reduce padding */
+    }
+
+    .about-content {
+        padding: 1rem;
+    }
+
+    .about-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-content p,
+    .about-content ul {
+        font-size: 1rem;
+    }
+
+    .about-content ul li::before {
+        font-size: 1.2rem;
     }
 }

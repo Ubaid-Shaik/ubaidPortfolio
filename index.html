@@ -5,42 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/Untitled-removebg-preview_resized.png" type="image/png">
     <title>Portfolio Website</title>
-
 </head>
-<body>
-    <header>
-        <header>
-            <a href="#" class="logo">Ubaid</a>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <nav class="nav-menu">
-                <a href="#" class="active">Home</a>
-                <a href="about.html">About</a>
-                <a href="skills.html">Skills</a>
-                <a href="education.html">Education</a>
-                <a href="experience.html">Experience</a>
-                <a href="projects.html">Projects</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-        </header>
 
+    <header>
+        <a href="#" class="logo">Ubaid</a>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            <a href="experience.html">Experience</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
     <section class="home">
         <!-- Video background -->
         <video autoplay muted loop class="bg-video">
             <source src="images/13495-248644905.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-
         <div class="home-img">
             <img src="images/Untitled-removebg-preview.png" alt="">
         </div>
         <div class="home-content">
             <h1>Hi, It's <span>Ubaid</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
+            <h3 class="typing-text">I'm a <span id="typing"></span></h3>
             <p>I am a motivated Computer Science graduate with hands-on experience in programming, software development, and cloud computing.
                 <br>My goal is to continually grow in the IT sector, contributing innovative solutions as a software engineer.</p>
             <div class="social-icons">
@@ -52,15 +49,51 @@
             <a href="Ubaidullah Yusuf Shaik CV.pdf" class="btn">Download CV</a>
         </div>
     </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navMenu = document.querySelector('.nav-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+            mobileMenu.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        });
 
-    mobileMenu.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-    });
-});
+        document.addEventListener('DOMContentLoaded', function () {
+            const texts = ["Web Developer", "Software Developer", "Web Designer", "App Developer", "CS Graduate"];
+            const typingElement = document.getElementById('typing');
+            let currentIndex = 0;
+            let currentTextIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentText = texts[currentTextIndex];
+                const isComplete = currentIndex >= currentText.length;
+
+                if (isDeleting) {
+                    typingElement.textContent = currentText.substring(0, currentIndex);
+                    currentIndex--;
+                } else {
+                    typingElement.textContent = currentText.substring(0, currentIndex + 1);
+                    currentIndex++;
+                }
+
+                if (isComplete && !isDeleting) {
+                    isDeleting = true;
+                    setTimeout(type, 1000); // Pause before deleting
+                } else if (currentIndex < 0) {
+                    isDeleting = false;
+                    currentTextIndex = (currentTextIndex + 1) % texts.length; // Move to next text
+                    currentIndex = -1; // Reset index for new text
+                    setTimeout(type, 500); // Pause before typing next text
+                } else {
+                    setTimeout(type, 150); // Speed of typing/deleting
+                }
+            }
+
+            type(); // Start the typing effect
+
+        });
     </script>
 </body>
 </html>
