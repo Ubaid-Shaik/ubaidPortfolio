@@ -213,28 +213,6 @@ span{
     min-width: 280px;
 }
 
-<<<<<<< HEAD
-.typing-text span {
-    position: relative;
-=======
-@keyframes words{
-    0%, 20%{
-        content: "Web Developer";
-    }
-    21%, 40%{
-        content: "Developer";
-    }
-    41%, 60%{
-        content: "Web Designer";
-    }
-    61%, 80%{
-        content: "App Developer";
-    }
-    81%, 100%{
-        content: "CS Graduate";
-    }
->>>>>>> 5bf4a6df70df877186277e091fb58d4528c876d6
-}
 
 @media (max-width: 1000px){
     .home{
