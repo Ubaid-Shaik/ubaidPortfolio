@@ -36,7 +36,7 @@
             <img src="images/Untitled-removebg-preview.png" alt="">
         </div>
         <div class="home-content">
-            <h1>Hi, It's <span>Ubaid</span></h1>
+            <h1>Hi, It's <span class="glow">Ubaid</span></h1>
             <h3 class="typing-text">I'm a <span id="typing"></span></h3>
             <p>I am a motivated Computer Science graduate with hands-on experience in programming, software development, and cloud computing.
                 <br>My goal is to continually grow in the IT sector, contributing innovative solutions as a software engineer.</p>
@@ -51,12 +51,14 @@
     </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const navMenu = document.querySelector('.nav-menu');
-            mobileMenu.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-            });
+       document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    mobileMenu.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        mobileMenu.classList.toggle('active'); // Toggle class for animation
+    });
         });
 
         document.addEventListener('DOMContentLoaded', function () {
