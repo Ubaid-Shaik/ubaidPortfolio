@@ -60,6 +60,11 @@ body {
     font-weight: 600;
 }
 
+/* New: slightly smaller h2 on subsequent items for visual hierarchy */
+.experience-content .experience-item + .experience-item h2 {
+    font-size: 2.2rem;
+}
+
 .experience-item .role {
     font-size: 1.8rem;
     color: #d1d1d1;
@@ -80,10 +85,17 @@ body {
 
 .experience-item .description li {
     color: #e0e0e0; /* Maintain text color of list items */
+    margin-bottom: 0.4rem;
 }
 
 .experience-item .description li::marker {
     color: #b74b4b; /* Set bullet dots to red */
+}
+
+/* Slight spacing tweak for top developer item so it stands out */
+.experience-item:first-of-type {
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255,255,255,0.03);
 }
 
 /* Adjust for responsiveness */
@@ -109,6 +121,7 @@ body {
     }
 }
 
+/* Navigation / mobile menu */
 .menu-toggle {
     display: none;
     flex-direction: column;
