@@ -97,5 +97,54 @@
             });
         });
     </script>
+     <!-- custom cursor element (desktop only) -->
+    <div class="cursor" id="cursor">
+      <div class="cursor-ring"></div>
+      <div class="cursor-dot"></div>
+    </div>
+
+    <script>
+      (function(){
+        const cursor = document.getElementById('cursor');
+        if (!cursor) return;
+        const dot = cursor.querySelector('.cursor-dot');
+        const ring = cursor.querySelector('.cursor-ring');
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        let ringX = mouseX, ringY = mouseY;
+        const ease = 0.18;
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          cursor.classList.remove('hidden');
+          cursor.style.left = mouseX + 'px';
+          cursor.style.top = mouseY + 'px';
+        });
+        window.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
+        window.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
+
+        function animate() {
+          ringX += (mouseX - ringX) * ease;
+          ringY += (mouseY - ringY) * ease;
+          ring.style.transform = `translate(${ringX - mouseX}px, ${ringY - mouseY}px) translate(-50%, -50%)`;
+          requestAnimationFrame(animate);
+        }
+        animate();
+
+        const interactives = document.querySelectorAll('a, button, .menu-toggle, .btn, .home-img img, .social-icons a, nav a');
+        interactives.forEach(el => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+          el.addEventListener('mousedown', () => cursor.classList.add('active'));
+          el.addEventListener('mouseup', () => cursor.classList.remove('active'));
+        });
+
+        window.addEventListener('touchstart', () => {
+          cursor.style.display = 'none';
+          const html = document.documentElement;
+          if (html) html.style.cursor = 'auto';
+        }, {passive: true});
+      })();
+    </script>
 </body>
 </html>

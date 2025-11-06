@@ -356,7 +356,7 @@ nav a:last-child:hover {
     .menu-toggle {
         display: flex;
         position: fixed;
-        top: 25px;         /* distance from top of viewport */
+        top: 22px;         /* distance from top of viewport */
         left: 322px;        /* move it more to the left edge */
         width: 48px;
         height: 48px;
@@ -392,4 +392,80 @@ nav a:last-child:hover {
         box-sizing: border-box;
         z-index: 1300; /* below toggle but above background */
     }
+}
+
+@media (pointer: fine) {
+  /* hide native cursor */
+  html { cursor: none; }
+
+  /* cursor wrapper */
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 48px;
+    height: 48px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    transition: opacity .18s ease;
+    opacity: 1;
+  }
+
+  .cursor-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%);
+    background: #b74b4b;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(183,75,75,0.95);
+    transition: transform .12s ease, background .12s ease;
+  }
+
+  .cursor-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 36px;
+    height: 36px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid rgba(183,75,75,0.85);
+    transition: transform .18s cubic-bezier(.2,.9,.2,1), background .18s ease, opacity .18s ease;
+    box-sizing: border-box;
+  }
+
+  /* hidden state (when leaving window) */
+  .cursor.hidden { opacity: 0; }
+
+  /* grow when hovering interactive elements */
+  .cursor.grow .cursor-dot { transform: translate(-50%, -50%) scale(1.6); background: #fff; }
+  .cursor.grow .cursor-ring { transform: translate(-50%, -50%) scale(1.35); background: rgba(183,75,75,0.06); }
+
+  /* active/press state */
+  .cursor.active .cursor-dot { transform: translate(-50%, -50%) scale(.85); }
+  .cursor.active .cursor-ring { transform: translate(-50%, -50%) scale(.95); opacity: .8; }
+
+  /* subtle hover lift for links / buttons */
+  nav a, .btn, .social-icons a, .home-img img {
+    transition: transform .18s ease, box-shadow .18s ease;
+    will-change: transform;
+  }
+
+  nav a:hover { transform: translateY(-6px); }
+  .btn:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 6px 18px rgba(183,75,75,0.14); }
+  .social-icons a:hover { transform: translateY(-6px) scale(1.08); box-shadow: 0 6px 20px rgba(183,75,75,0.12); }
+  .home-img img:hover { transform: scale(1.03) rotate(-1.2deg); box-shadow: 0 18px 50px rgba(0,0,0,0.35); }
+
+  /* make hamburger respond visually */
+  .menu-toggle:hover { transform: scale(1.05); }
+
+  /* small accessibility fallback: keep pointer visible on very small viewports */
+  @media (max-width: 600px) {
+    html { cursor: auto; }
+    .cursor { display: none; }
+  }
 }
